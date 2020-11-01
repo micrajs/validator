@@ -1,6 +1,6 @@
 {
   "name": "@micra/validator",
-  "version": "0.0.6k",
+  "version": "0.0.6",
   "author": "Olavo Amorim Santos<contact@micra.dev>",
   "license": "MIT",
   "main": ".micra/index.cjs.js",
