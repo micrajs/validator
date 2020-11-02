@@ -24,8 +24,6 @@ export const validate = <T = Record<string, any>>(
       value: data[field as string],
     };
 
-    dto[field] = data[field as string];
-
     const rules = Array.isArray(validation[field])
       ? (validation[field] as ValidationRule<T>[])
       : ((validation[field] as ValidationRuleGenerator<T>)(context) as ValidationRule<T>[]);
@@ -34,6 +32,8 @@ export const validate = <T = Record<string, any>>(
       if ((!rule.shouldRun || rule.shouldRun(context)) && !rule.check(context)) {
         const message = rule.message(context);
         errors.set(field, typeof message === 'string' ? { message } : message);
+      } else {
+        dto[field] = data[field as string];
       }
     });
   });
