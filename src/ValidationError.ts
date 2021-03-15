@@ -46,4 +46,12 @@ export class ValidationError<T = any> extends Error {
       this.errors[field].push(report);
     }
   }
+
+  get(field: keyof T) {
+    if (field && this.errors[field]) {
+      return this.errors[field];
+    }
+
+    throw new Error(`Invalid field${field ? ` "${field}"` : ''}`);
+  }
 }
